@@ -1,0 +1,53 @@
+@page
+@model aspnetcoreapp.Pages_Music.IndexModel
+
+
+<div class="alert alert-light display-5">
+@ViewData["Title"]
+</div>
+
+<p>
+    <a asp-page="Create" class="btn btn-outline-info rounded-pill">Añadir producto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Music[0].Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Music[0].FechaEstreno)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Music[0].Genero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Music[0].Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Music) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEstreno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genero)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-success rounded-circle"><i class="bi bi-pen-fill"></i></a> |
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-warning rounded-circle"><i class="bi bi-eye-fill"></i></a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger rounded-circle"><i class="bi bi-trash-fill"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
